@@ -8,12 +8,23 @@
     </title>
 </head>
 <body>
+    
     @using (Html.BeginForm("Index", "Products", FormMethod.Get))
     {
         <input type="submit" value="Вернуться"/>
     }
     <h1>Добавление категории в таблицу Category</h1>
-    
+    @using (Html.BeginForm("CreateCategory", "Products", FormMethod.Post))
+    {
+        <p>
+            @Html.Label("Введите наименование новой категории")
+        </p>
+        <p>
+            @Html.TextBoxFor(m=>m.Category.CategoryName)
+        </p>
+        <input type="submit" value="Добавить" />
+
+    }
     <table>
         <tr>
             <th>Список категорий</th>
@@ -27,17 +38,5 @@
             </tr>
         }
     </table>
-    @using (Html.BeginForm("CreateCategory", "Products", FormMethod.Post))
-    {
-        <p>
-            @Html.Label("Введите наименование новой категории")
-        </p>
-        <p>
-            @Html.TextBoxFor(m=>m.Category.CategoryName)
-        </p>
-        <input type="submit" value="Добавить" />
-
-    }
-    
 </body>
 </html>
