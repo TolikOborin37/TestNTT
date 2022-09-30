@@ -6,7 +6,8 @@ namespace TestNTT.Models
     {
         public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
-
+            //создается бд, если она отсутствует
+            Database.EnsureCreated();
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }

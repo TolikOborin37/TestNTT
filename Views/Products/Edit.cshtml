@@ -14,8 +14,9 @@
         <input type="submit" value="Вернуться"/>
     }
     <h1>Изменить продукт</h1>
-    @using (Html.BeginForm("Edit", "Products", FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Products",FormMethod.Post))
     {
+        @Html.HiddenFor(p=>p.Product.ProductId)
         <p>
             @Html.TextBoxFor(p=>p.Product.ProductName)
         </p>
@@ -23,7 +24,7 @@
         <p>
            @Html.DropDownListFor(c=>c.Product.CategoryId, new SelectList(Model.Categories,"CategoryId","CategoryName"))
         </p>
-        <input type="submit" value="Отправить" />
+        <input type="submit" value="Отправить"/>
     }
 </body>
 </html>

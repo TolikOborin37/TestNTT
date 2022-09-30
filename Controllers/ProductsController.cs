@@ -58,7 +58,7 @@ namespace TestNTT.Controllers
         {
             db.Products.Add(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Create");
         }
         //Update обновление уже имеющих данных
         [HttpGet]
