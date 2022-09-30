@@ -1,0 +1,29 @@
+﻿@model TestNTT.Models.ViewCreateProduct
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+
+    </title>
+</head>
+
+<body>
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+    {
+        <input type="submit" value="Вернуться"/>
+    }
+    <h1>Изменить продукт</h1>
+    @using (Html.BeginForm("Edit", "Products", FormMethod.Post))
+    {
+        <p>
+            @Html.TextBoxFor(p=>p.Product.ProductName)
+        </p>
+
+        <p>
+           @Html.DropDownListFor(c=>c.Product.CategoryId, new SelectList(Model.Categories,"CategoryId","CategoryName"))
+        </p>
+        <input type="submit" value="Отправить" />
+    }
+</body>
+</html>

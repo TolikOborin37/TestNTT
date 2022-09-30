@@ -1,0 +1,51 @@
+﻿@model TestNTT.Models.ViewCreateProduct
+
+
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+    <title>
+
+    </title>
+</head>
+
+
+<body>
+    <h1>Продукты по категориям из БД</h1>
+    @Html.ActionLink("Добавить продукт","Create")
+    <br />
+    @Html.ActionLink("Добавить категорию", "CreateCategory")
+    <table>
+        <tr>
+            <th>
+                @Html.ActionLink("Наименование товара","Index", new {sortOrder = ViewBag.ProductNameSort})
+            </th>
+            <th>
+                @Html.ActionLink("Категория","Index", new {sortOrder = ViewBag.CategoryNameSort})
+            </th>
+        </tr>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m=>item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m=>item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Изменить","Edit","Products",new {id=@item.ProductId})
+                </td>
+                <td>
+                    @using (Html.BeginForm("Delete", "Products", new { id = @item.ProductId }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Удалить" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@model TestNTT.Models.ViewCreateProduct
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+
+    </title>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+    {
+        <input type="submit" value="Вернуться"/>
+    }
+    <h1>Добавление категории в таблицу Category</h1>
+    
+    <table>
+        <tr>
+            <th>Список категорий</th>
+        </tr>
+        @foreach (var item in Model.Categories)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m=>item.CategoryName)
+                </td>
+            </tr>
+        }
+    </table>
+    @using (Html.BeginForm("CreateCategory", "Products", FormMethod.Post))
+    {
+        <p>
+            @Html.Label("Введите наименование новой категории")
+        </p>
+        <p>
+            @Html.TextBoxFor(m=>m.Category.CategoryName)
+        </p>
+        <input type="submit" value="Добавить" />
+
+    }
+    
+</body>
+</html>
